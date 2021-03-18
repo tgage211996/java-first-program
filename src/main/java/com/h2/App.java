@@ -18,7 +18,7 @@ public class App
     private static int add(int[] numbers){
         int sum = 0;
         for(int num: numbers){
-            sum = sum + num;
+            sum += num;
         }
         return sum;
     }
