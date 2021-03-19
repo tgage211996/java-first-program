@@ -55,7 +55,7 @@ public class Finance {
             return;
         }
         if(!isValidCommand){
-            System.out.print(commandsToUsage.get(args[0]));
+            System.out.print(commandsToUsage.get(args[0]) +"\n");
             return;
         }
         executeCommand(command, Arrays.copyOfRange(args, 1, args.length));
