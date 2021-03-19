@@ -1,4 +1,6 @@
-package com.h2;
+import com.h2.BestLoanRates;
+import com.h2.MortgageCalculator;
+import com.h2.SavingsCalculator;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -11,7 +13,7 @@ public class Finance {
 
     public final static Map<String, String> commandsToUsage = Map.of(BEST_LOAN_RATES, "usage: bestLoanRates",
             SAVINGS_CALCULATOR, "usage: savingsCalculator <credits separated by ','> <debits separated by ','>",
-            MORTGAGE_CALCULATOR, "usage: mortgageCalculator <loanAmount> <termInYears> <annualRate>");
+            MORTGAGE_CALCULATOR, "usage: mortgageCalculator <loanAmount> <termInYears> <annualRate>\n");
 
     private static boolean validateCommandArguments(String[] args){
         switch (args[0]){
@@ -21,9 +23,9 @@ public class Finance {
                 return args.length == 3;
             case MORTGAGE_CALCULATOR:
                 return args.length == 4;
+            default:
+                return false;
         }
-
-        return false;
     }
 
     private static void executeCommand(String command, String[] arguments){
@@ -37,7 +39,7 @@ public class Finance {
                 SavingsCalculator.main(arguments);
                 return;
             case MORTGAGE_CALCULATOR:
-                System.out.print("Finding your monthly payment ...");
+                System.out.print("Finding your monthly payment ...\n");
                 MortgageCalculator.main(arguments);
                 return;
         }
@@ -52,7 +54,7 @@ public class Finance {
             System.out.print(command + ": command not found\n");
             return;
         }
-        if(!isValidCommand == true){
+        if(!isValidCommand){
             commandsToUsage.get(args[0]);
             return;
         }
